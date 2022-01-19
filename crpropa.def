@@ -24,7 +24,7 @@ From: rockylinux:8
 
     trap cleanup EXIT
 
-    # *muparser
+    # * muparser
 
     cd $BUILD_DIR
     wget https://github.com/beltoforion/muparser/archive/refs/tags/v2.3.2.tar.gz
@@ -44,14 +44,10 @@ From: rockylinux:8
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local
     make install
     
-
-    
-
     
 %environment
     export LC_ALL=C
     export SHELL=/bin/bash
-    #xport PATH=$PATH:/opt/node-v12.18.3-linux-x64/bin:/$HOME/.local/bin
 
 %labels
     Author J. Dvoracek
