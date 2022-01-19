@@ -1,11 +1,12 @@
 # crpropa_singularity
 
 Recipe to build [Singularity](https://sylabs.io/guides/latest/user-guide/introduction.html) image containing [CRPropa](https://github.com/CRPropa/CRPropa3) - Cosmic Ray Propagation Framework.
-Prebuilt container is available in "releases".
 
 ## use container
 
-( app.py is template python script importing and using crpropa )
+Prebuilt container is available in "releases".
+
+( app.py is your python script using crpropa )
 
 ```
 -bash-4.2$ ./Singularity.sif python3 app.py 
