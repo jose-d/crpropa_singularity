@@ -1,6 +1,6 @@
 # crpropa_singularity
 
-Recipe to build [Singularity](https://sylabs.io/guides/latest/user-guide/introduction.html) image containing [CRPropa]() - Cosmic Ray Propagation Framework.
+Recipe to build [Singularity](https://sylabs.io/guides/latest/user-guide/introduction.html) image containing [CRPropa](https://github.com/CRPropa/CRPropa3) - Cosmic Ray Propagation Framework.
 Prebuilt container is available in "releases".
 
 ## use container
