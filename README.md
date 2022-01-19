@@ -25,3 +25,7 @@ we can import crpropa, cool.
 ### build in sandbox (development)
 
 ```singularity build --fakeroot --sandbox sandbox ./crpropa.def```
+
+## tech stuff
+
+Container is based on Rocky Linux docker image.
