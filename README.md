@@ -28,4 +28,12 @@ we can import crpropa, cool.
 
 ## tech stuff
 
+### get singularity at ubuntu
+
+this guide, https://github.com/sylabs/singularity/blob/master/INSTALL.md, works pretty well on recent ubuntu (21.10).
+
+### other notes
+
 Container is based on Rocky Linux docker image.
+
+
