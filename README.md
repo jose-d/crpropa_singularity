@@ -5,7 +5,7 @@ Prebuilt container is available in "releases".
 
 ## use container
 
-( app.py is python script importing and using crpropa )
+( app.py is template python script importing and using crpropa )
 
 ```
 -bash-4.2$ ./Singularity.sif python3 app.py 
