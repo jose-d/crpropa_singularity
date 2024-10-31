@@ -1,16 +1,22 @@
 BootStrap: docker
-From: rockylinux:8
+From: rockylinux:9
+
+%arguments
+  CRPROPA_VERSION=3.2.1
+  MUPARSER_VERSION=2.3.4
 
 %post
     # basic devel + system packages:
-    dnf -y install dnf-plugins-core sudo wget curl
+    dnf -y --allowerasing install dnf-plugins-core sudo wget curl
     dnf -y group install "Development Tools"
-    dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-    dnf -y config-manager --set-enabled powertools
+    dnf config-manager --set-enabled crb
+
+    #dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    dnf -y install epel-release
     dnf -y install git vim
 
     # crpropa-specific
-    dnf -y install python3 python36-devel swig fftw fftw-devel libomp libomp-devel cmake python3-numpy doxygen pkgconf-pkg-config hdf5-devel hdf5 gperftools-devel gperftools zlib-devel
+    dnf -y install python3 python3-devel swig fftw fftw-devel libomp libomp-devel cmake python3-numpy doxygen pkgconf-pkg-config hdf5-devel hdf5 gperftools-devel gperftools zlib-devel
 
     #create builddir:
 
@@ -27,21 +33,22 @@ From: rockylinux:8
     # * muparser
 
     cd $BUILD_DIR
-    wget https://github.com/beltoforion/muparser/archive/refs/tags/v2.3.2.tar.gz
-    tar -xvf ./v2.3.2.tar.gz
-    cd muparser-2.3.2
+    wget https://github.com/beltoforion/muparser/archive/refs/tags/v{{ MUPARSER_VERSION }}.tar.gz
+    tar -xvf ./v{{ MUPARSER_VERSION }}.tar.gz
+    cd muparser-{{ MUPARSER_VERSION }}
     cmake . -DENABLE_SAMPLES=OFF -DENABLE_OPENMP=ON -DBUILD_SHARED_LIBS=ON
     make install
 
     # * crpropa
 
     cd $BUILD_DIR
-    wget https://github.com/CRPropa/CRPropa3/archive/refs/tags/3.1.7.tar.gz
-    tar -xvf ./3.1.7.tar.gz
-    cd CRPropa3-3.1.7
+    wget https://github.com/CRPropa/CRPropa3/archive/refs/tags/{{ CRPROPA_VERSION }}.tar.gz
+    tar -xvf ./{{ CRPROPA_VERSION }}.tar.gz
+    cd CRPropa3-{{ CRPROPA_VERSION }}
     mkdir build
     cd build
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local
+    make
     make install
     
     
