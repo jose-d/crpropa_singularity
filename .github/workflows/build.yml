@@ -8,6 +8,7 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+
         - name: Checkout repository
           uses: actions/checkout@v4
 
@@ -24,8 +25,25 @@ jobs:
             ls -lah
             apptainer build crpropa.sif crpropa.def
 
+
+        - name: Create tag
+          id: create_tag
+          uses: actions/github-script@v5
+          with:
+            script: |
+                const date = new Date();
+                const timestamp = date.toISOString().replace(/[:.]/g, '-');
+                github.rest.git.createRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: `refs/tags/${timestamp}`,
+                  sha: context.sha
+                });
+                return timestamp;
+
         - name: Release
           uses: softprops/action-gh-release@v2
           with:
             body_path: "foo bar"
             files: crpropa.sif
+            tag_name: ${{ steps.create_tag.outputs.result }}
