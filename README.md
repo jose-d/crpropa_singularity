@@ -16,7 +16,7 @@ CosmicRay at z = 0
 Propagated distance 13273.263588242868 Mpc
 ```
 
-## Advanced: Creating the Container
+## Advanced: Building the container locally
 
 ### Create SIF File
 
