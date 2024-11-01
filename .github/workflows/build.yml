@@ -24,19 +24,8 @@ jobs:
             ls -lah
             apptainer build crpropa.sif crpropa.def
 
-        # from https://github.com/elgohr/Github-Release-Action
-        - name: Create Release
-          id: create_release
-          uses: elgohr/Github-Release-Action@v5
-          env:
-            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            title: ${{ github.event.head_commit.timestamp }}
-            tag: ${{ github.run_id }}
-
-        # from https://github.com/softprops/action-gh-release
         - name: Release
           uses: softprops/action-gh-release@v2
-          if: startsWith(github.ref, 'refs/tags/')
           with:
+            body_path: "foo bar"
             files: crpropa.sif
