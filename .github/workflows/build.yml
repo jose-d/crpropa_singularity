@@ -22,7 +22,7 @@ jobs:
         - name: Build Apptainer image
           run: |
             ls -lah
-            apptainer build /path/to/your/container.sif /path/to/your/definition.def
+            apptainer build crpropa.sif crpropa.def
 
         - name: Create Release
           id: create_release
