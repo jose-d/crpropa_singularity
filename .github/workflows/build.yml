@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Apptainer
+      - name: Install Apptainer from PPA repository
         run: |
           sudo apt-get update
           sudo apt-get install -y software-properties-common
@@ -24,6 +24,8 @@ jobs:
           ls -lah
           apptainer build crpropa.sif crpropa.def
 
+      # We expect that this action is run in a repository manually, so there is no release or tag available.
+      # Here we create tag from timestamp, and then the release is created with the tag.
       - name: Create tag
         id: create_tag
         uses: actions/github-script@v5

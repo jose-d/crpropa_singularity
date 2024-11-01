@@ -21,6 +21,9 @@ From: rockylinux:9
     # crpropa-specific
     dnf -y install python3 python3-devel swig fftw fftw-devel libomp libomp-devel cmake python3-numpy doxygen pkgconf-pkg-config hdf5-devel hdf5 gperftools-devel gperftools zlib-devel
 
+    # set python 3.9 as default
+    alternatives --set python /usr/bin/python3.9
+
     #create builddir:
 
     BUILD_DIR=`mktemp --directory -p /tmp`
