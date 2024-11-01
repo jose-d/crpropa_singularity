@@ -50,7 +50,3 @@ Follow the [installation guide](https://apptainer.org/docs/admin/main/installati
 ### Additional Notes
 
 The container is based on the Rocky Linux 9 Docker image.
-
-
-
-
