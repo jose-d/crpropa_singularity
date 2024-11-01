@@ -20,10 +20,10 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y apptainer
 
-        - name: Build Apptainer image
-          run: |
-            ls -lah
-            apptainer build crpropa.sif crpropa.def
+#        - name: Build Apptainer image
+#          run: |
+#            ls -lah
+#            apptainer build crpropa.sif crpropa.def
 
 
         - name: Create tag
@@ -45,5 +45,6 @@ jobs:
           uses: softprops/action-gh-release@v2
           with:
             body_path: "foo bar"
-            files: crpropa.sif
+#            files: crpropa.sif
+            files: README.md
             tag_name: ${{ steps.create_tag.outputs.result }}
