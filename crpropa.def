@@ -5,15 +5,18 @@ From: rockylinux:9
   CRPROPA_VERSION=3.2.1
   MUPARSER_VERSION=2.3.4
 
+%labels
+  Author J. Dvoracek
+
+
 %post
-    # basic devel + system packages:
+    # install basic devel + system packages:
     dnf -y --allowerasing install dnf-plugins-core sudo wget curl
     dnf -y group install "Development Tools"
     dnf config-manager --set-enabled crb
 
-    #dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     dnf -y install epel-release
-    dnf -y install git vim
+    # dnf -y install git vim  # this is only for testing purposes
 
     # crpropa-specific
     dnf -y install python3 python3-devel swig fftw fftw-devel libomp libomp-devel cmake python3-numpy doxygen pkgconf-pkg-config hdf5-devel hdf5 gperftools-devel gperftools zlib-devel
@@ -55,7 +58,3 @@ From: rockylinux:9
 %environment
     export LC_ALL=C
     export SHELL=/bin/bash
-
-%labels
-    Author J. Dvoracek
-
