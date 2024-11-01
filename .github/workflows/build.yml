@@ -28,7 +28,7 @@ jobs:
       # Here we create tag from timestamp, and then the release is created with the tag.
       - name: Create tag
         id: create_tag
-        uses: actions/github-script@v5
+        uses: actions/github-script@v7
         with:
           script: |
             const date = new Date();
