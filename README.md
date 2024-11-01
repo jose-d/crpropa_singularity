@@ -1,40 +1,56 @@
 # crpropa_singularity
 
-Recipe to build [Singularity](https://sylabs.io/guides/latest/user-guide/introduction.html) image containing [CRPropa](https://github.com/CRPropa/CRPropa3) - Cosmic Ray Propagation Framework.
+# CRPropa Apptainer Image
 
-## use container
+This repository contains a recipe to build an [Apptainer](https://apptainer.org/user-guide/introduction.html) image for [CRPropa](https://github.com/CRPropa/CRPropa3) - the Cosmic Ray Propagation Framework.
 
-Prebuilt container is available in "releases".
+## Using the Container
 
-( app.py is your python script using crpropa )
+A prebuilt container is available in the "releases" section.
 
+To run your Python script (`app.py`) using CRPropa, use the following command:
+
+```bash
+./Apptainer.sif python3 app.py
 ```
--bash-4.2$ ./Singularity.sif python3 app.py 
+
+Example output:
+
+```bash
 Python version
 3.6.8 (default, Nov  9 2021, 14:44:26) 
 [GCC 8.5.0 20210514 (Red Hat 8.5.0-3)]
 we can import crpropa, cool.
--bash-4.2$
 ```
 
-## create container
+## Creating the Container
 
-### create sif file (production)
+### Production: Create SIF File
 
-```sudo singularity build ./Singularity.sif ./crpropa.def```
+To build the SIF file for production, run:
 
-### build in sandbox (development)
+```bash
+sudo apptainer build ./Apptainer.sif ./crpropa.def
+```
 
-```singularity build --fakeroot --sandbox sandbox ./crpropa.def```
+### Development: Build in Sandbox
 
-## tech stuff
+To build the container in a sandbox environment for development, run:
 
-### get singularity at ubuntu
+```bash
+apptainer build --fakeroot --sandbox sandbox ./crpropa.def
+```
 
-this guide, https://github.com/sylabs/singularity/blob/master/INSTALL.md, works pretty well on recent ubuntu (21.10).
+## Technical Information
 
-### other notes
+### Installing Apptainer on Ubuntu
 
-Container is based on Rocky Linux docker image.
+Follow the [installation guide](https://apptainer.org/docs/admin/main/installation.html) for Apptainer, which works well on recent Ubuntu versions (24.04).
+
+### Additional Notes
+
+The container is based on the Rocky Linux 9 Docker image.
+
+
 
 
