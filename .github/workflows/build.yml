@@ -44,7 +44,7 @@ jobs:
         - name: Release
           uses: softprops/action-gh-release@v2
           with:
-            body_path: "foo bar"
+#            body_path: "foo bar"
 #            files: crpropa.sif
             files: README.md
             tag_name: ${{ steps.create_tag.outputs.result }}
