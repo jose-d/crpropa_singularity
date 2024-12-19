@@ -22,7 +22,7 @@ jobs:
       - name: Build Apptainer image
         run: |
           ls -lah
-          apptainer build crpropa.sif crpropa.def
+          apptainer build --fakeroot crpropa.sif crpropa.def
 
       # We expect that this action is run in a repository manually, so there is no release or tag available.
       # Here we create tag from timestamp, and then the release is created with the tag.
